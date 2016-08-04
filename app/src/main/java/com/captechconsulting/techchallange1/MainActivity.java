@@ -9,8 +9,8 @@ import android.view.View;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,14 +29,17 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @SuppressWarnings("deprecation")
     private void updateDates() {
+        Locale currentLocale = getResources().getConfiguration().locale;
         File file = new File(this.getFilesDir(), FILENAME);
         FileOutputStream outputStream;
 
         try {
             outputStream = new FileOutputStream(file, true);
 
-            DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+            DateFormat formatter = DateFormat.getDateTimeInstance(DateFormat.DEFAULT,
+                    DateFormat.DEFAULT, currentLocale);
             String date = formatter.format(new Date()) + "\n";
 
             outputStream.write(date.getBytes());
