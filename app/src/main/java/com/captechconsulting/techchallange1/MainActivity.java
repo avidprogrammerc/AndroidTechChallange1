@@ -14,8 +14,6 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final String FILENAME = "saved_datetimes";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     @SuppressWarnings("deprecation")
     private void updateDates() {
         Locale currentLocale = getResources().getConfiguration().locale;
-        File file = new File(this.getFilesDir(), FILENAME);
+        File file = new File(this.getFilesDir(), "saved_datetimes");
         FileOutputStream outputStream;
 
         try {
