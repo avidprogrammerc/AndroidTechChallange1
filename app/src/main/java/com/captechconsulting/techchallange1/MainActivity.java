@@ -19,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        updateDates();
+        if (savedInstanceState == null)
+            updateDates();
     }
 
     public void showDates(View view) {
